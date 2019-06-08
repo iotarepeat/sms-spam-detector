@@ -12,9 +12,9 @@ def messageFunction(message):
 
 
 # Preprocessing
-with open('SMSSpamCollection') as f:
+with open('SMSSpamCollection',encoding="utf8") as f:
     tmp = f.readlines()
-with open('stopwords-en.txt') as f:
+with open('stopwords-en.txt',encoding="utf8") as f:
     stopwords = {i.strip() for i in f.readlines()}
 word_counter = {}
 count = {}
