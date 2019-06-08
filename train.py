@@ -1,13 +1,14 @@
 from collections import Counter
 import pickle
+import string
 
 
 def messageFunction(message):
     # TODO: Add lemmatization and stemmer
     with open('stopwords-en.txt',encoding="utf8") as f:
         stopwords = {i.strip() for i in f.readlines()}
-    for char in '!@$&.%#':
-        message.replace(char, '')
+
+    message=''.join([i for i in message if i not in string.punctuation])
     message = message.lower().split()
     message = [word for word in message if word not in stopwords]
     return message
@@ -27,7 +28,6 @@ def predict(message):
 
 if __name__ == "__main__":
     # Preprocessing
-    input("Press <enter> to train")
     with open('SMSSpamCollection',encoding="utf8") as f:
         tmp = f.readlines()
 
