@@ -1,17 +1,5 @@
 import pickle
-
-
-def messageFunction(message):
-    # TODO: Add lemmatization and stemmer
-    with open('stopwords-en.txt') as f:
-        stopwords = {i.strip() for i in f.readlines()}
-    for char in '!@$&.%#':
-        message.replace(char, '')
-    message = message.lower().split()
-    message = [word for word in message if word not in stopwords]
-    return message
-
-
+from train import messageFunction
 def predict(message):
     message = messageFunction(message)
     with open('probab.pickle', 'rb') as f:
